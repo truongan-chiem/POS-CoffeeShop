@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
 import Bill from "../../components/Bill/Bill";
 import Beer from "../../asset/icon/Beer";
 import Coffee from "../../asset/icon/Coffee";
@@ -12,52 +14,60 @@ import {AiOutlineSearch} from 'react-icons/ai'
 import "./Menu.scss";
 import Button from "../../components/Button/Button";
 import TabContent from "../../components/TabContent/TabContent";
+
 const Menu = () => {
 
   const listTabs = [
     {
-      index : 0,
       display : 'All',
-      icon: <Beer />
+      icon: <Beer />,
+      type : 'all'
     },
     {
-      index : 1,
       display : 'Coffee',
-      icon: <Coffee />
+      icon: <Coffee />,
+      type : 'coffee'
     },
     {
-      index : 2,
       display : 'Juice',
-      icon: <Juice />
+      icon: <Juice />,
+      type : 'juice'
     },
     {
-      index : 3,
       display : 'Milk',
-      icon: <Milk />
+      icon: <Milk />,
+      type : 'milk'
     },
     {
-      index : 4,
       display : 'Snack',
-      icon: <Snack />
+      icon: <Snack />,
+      type : 'snack'
     },
     {
-      index : 5,
       display : 'Rice',
-      icon: <Rice />
+      icon: <Rice />,
+      type : 'rice'
     },
     {
-      index : 6,
       display : 'Dessert',
-      icon: <Dessert />
+      icon: <Dessert />,
+      type : 'dessert'
     }
   ]
 
-  const [tabValue, setTabValue] = useState(0);
+  const listMenu = useSelector(state => state.menu.listMenu)
+
+  const [tabValue, setTabValue] = useState('all');
+  const [listData, setListData] = useState([]);
+
+  useEffect(() => {
+    const newList = tabValue === 'all' ? listMenu : listMenu.filter(item => item.type === tabValue)
+    setListData(newList)
+  }, [listMenu,tabValue]);
 
   return (
     <div className="menu">
       
-
       <header className="menu__header">
         <h1 className="menu__header__title">Choose Category</h1>
         <div className="menu__header__search">
@@ -68,13 +78,13 @@ const Menu = () => {
 
       <nav className="menu__tabs">
         {listTabs.map((item,index) => (
-          <Button onClick={() => setTabValue(index)} key={item.index} icon = {item.icon} type={'shortcut'} className = {item.index === tabValue ? 'active' : ''}>
+          <Button onClick={() => setTabValue(item.type)} key={index} icon = {item.icon} type={'shortcut'} className = {item.type === tabValue ? 'active' : ''}>
             {item.display}
           </Button>
         ))}
       </nav>
         
-        <TabContent />
+        <TabContent listData = {listData} tabValue = {tabValue}/>
 
       <Bill />
     </div>

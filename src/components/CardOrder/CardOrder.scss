@@ -1,15 +1,14 @@
 @use '../../sass/' as *;
 
-.cardfood{
+.card-order{
     background-color: $white;
     border-radius: 1rem;
     padding: 3rem;
-    height: 42rem;
+    max-width: 43rem;
     transition: all 0.3s ease;
     overflow-y: hidden;
     &:hover{
         box-shadow: rgba(84, 59, 10, 0.2) 0px 7px 29px 0px;
-        cursor: pointer;
     }
     & > * ~ *{
         margin-top: 2.5rem;
@@ -21,7 +20,7 @@
         height: 17.5rem;
 
         & > img{
-            width: 40%;
+            width: 14rem;
             height: 100%;
             border-radius: 1rem;
         }
@@ -54,8 +53,5 @@
     }
     &__btn{
         @include flex(center,center);
-    }
-    &.active{
-        height: 50rem;
     }
 }

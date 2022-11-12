@@ -1,19 +1,15 @@
 import React from 'react'
 import {BsPencilFill} from 'react-icons/bs'
 import Price from '../Price/Price';
-import './CardChoose.scss'
-const CardChoose = () => {
-    const img = 'http://starboxcoffee.weebly.com/uploads/2/3/7/4/23748829/s908146353969437727_p6_i1_w305.jpeg';
-    const name = 'Caramel Frappucinno'
-    const number = 2
-    const price = 3.95
+import './ItemOrder.scss'
+const ItemOrder = ({name,number,price,img}) => {
   return (
-    <div className='card-choose'>
-        <div className="card-choose__info">
+    <div className='item-order'>
+        <div className="item-order__info">
             <img src={img} alt="" />
-            <div className="card-choose__info__about">
+            <div className="item-order__info__about">
                 <h2>{name}</h2>
-                <div className='card-choose__info__about__note'>
+                <div className='item-order__info__about__note'>
                     <h2>x {number}</h2>
                     <div>
                         <span>Notes</span> 
@@ -27,4 +23,4 @@ const CardChoose = () => {
   )
 }
 
-export default CardChoose
+export default ItemOrder

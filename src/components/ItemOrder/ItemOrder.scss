@@ -1,6 +1,6 @@
 @use '../../sass/' as *;
 
-.card-choose{
+.item-order{
     @include flex(center,space-between);
     &__info{
         @include flex(center,null);

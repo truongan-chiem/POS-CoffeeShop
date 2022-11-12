@@ -14,8 +14,11 @@
     transition: all .3s ease;
     &:hover{
         background-color: rgba($color: $main-color, $alpha: 0.2);
-        color: $main-color;
-        
+        color: $main-color;   
+    }
+    &:active{
+        background-color: $main-color;
+        color: $main-bg;
     }
 }
 .btn-shortcut{

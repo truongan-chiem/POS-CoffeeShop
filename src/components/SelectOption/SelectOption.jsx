@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import "./SelectOption.scss";
 const SelectOption = ({ title, listOption, options, setOptions }) => {
-  const activeColor = title === "sugar" || title === "ice";
+  const activeColor = title !== "mood" && title !== "size";
   return (
     <div className="select-option">
       <h2 className="select-option__title">{title}</h2>
