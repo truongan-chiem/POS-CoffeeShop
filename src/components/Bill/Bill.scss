@@ -1,0 +1,60 @@
+@use '../../sass/' as *;
+
+.bill{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    background-color: $white;
+    padding: 2rem;
+    @include flex(null,space-between);
+    flex-direction: column;
+    &__info{
+        & > * ~ * {
+            margin-top: 1rem;
+        }
+        &__list-choose{
+            height: 26rem;
+            overflow: auto;
+            & >  * ~ * {
+                margin-top: 1rem;
+            }
+        }
+        &__row{
+            @include flex(center,space-between);
+            &.tax{
+                color: rgba($color: $black, $alpha: 0.4);
+            }
+            &.total{
+              font-size: 1.5rem;
+              font-weight: 700;
+            }
+        }
+        & > .divider{
+            border-top: 1px dashed rgba($color: $black, $alpha: 0.5);
+        }
+    }
+    &__payment{
+        flex-direction: column;
+        & > h1{
+            font-size: 3rem
+        }
+        @include flex(center,null);
+        & > * ~ * {
+            margin-top: 2rem;
+        }
+        &__options{
+            @include flex(center,space-between);
+            & > * ~ *{
+                margin-left: 1rem;
+            }
+            & > button{
+                width: 12rem;
+            }
+        }
+        &__printbill{
+            width: 100%;
+        }
+    }
+}

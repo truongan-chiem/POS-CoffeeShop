@@ -1,0 +1,22 @@
+@use '../../sass/' as *;
+
+.tab-content{
+    &__header{
+        @include flex(center,space-between);
+
+        &__title{
+            font-weight: 700;
+        }
+        & > span{
+            color: rgba($color: $black, $alpha: 0.5);
+            font-size: 1.5rem;
+        }
+    }
+    &__body{
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 2rem;
+        justify-content: center;
+        padding-top: 2rem;
+    }
+}

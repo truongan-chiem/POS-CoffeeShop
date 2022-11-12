@@ -1,0 +1,44 @@
+@use '../../sass/' as *;
+
+.menu{
+    max-width: 60vw;
+    padding: 4rem 2rem;
+    & > * ~ * {
+        margin-top: 2.5rem;
+    }
+    & > *:last-child{
+        margin-top: 0
+    }
+    &__header{
+        @include flex(center,space-between);
+
+        &__title{
+            font-weight: 700;
+            font-size: 3rem;
+        }
+        &__search{
+            @include flex(center,null);
+            background-color: $white;
+            border-radius: 0.5rem;
+            position: relative;
+            padding: 1rem 2rem;
+            & > input{
+                width: 30rem;
+                outline: none;
+                border: none;
+                font-size: 1.5rem;
+                color: $main-color;
+            }
+            & > svg{
+                font-size: 2rem;
+            }
+        }
+    }
+
+    &__tabs{
+        @include flex( center,space-between);
+        & > button{
+            width: 8rem;
+        }
+    }
+}
