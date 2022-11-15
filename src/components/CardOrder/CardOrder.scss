@@ -1,57 +1,53 @@
 @use '../../sass/' as *;
 
 .card-order{
-    background-color: $white;
-    border-radius: 1rem;
-    padding: 3rem;
-    max-width: 43rem;
+    border: 1px solid transparent;
+    padding: 2rem;
     transition: all 0.3s ease;
-    overflow-y: hidden;
-    &:hover{
-        box-shadow: rgba(84, 59, 10, 0.2) 0px 7px 29px 0px;
-    }
-    & > * ~ *{
-        margin-top: 2.5rem;
-    }
+    &__header{
+        @include flex(center,space-between);
 
-    &__info{
-        @include flex(null,null);
-
-        height: 17.5rem;
-
-        & > img{
-            width: 14rem;
-            height: 100%;
-            border-radius: 1rem;
+        & > h1{
+            text-transform: capitalize;
+            font-weight: 700;
+            font-size: 2.5rem;
         }
-        &__about{
-            margin-left: 4rem;
-            @include flex(flex-start,space-between);
-            flex-direction: column;
-            & > * ~ *{
-                margin-top: 1rem;
-            }
-            & > *:last-child{
-                margin-left: 1rem;
-                font-size: 2rem;
+        & > p {
+            color: $gray;
+            font-size: 2.2rem;
+            font-weight: 600;
+        }
+    }
+    &__body{
+        margin-top: 1rem;
+        @include flex(flex-end,space-between);
+        & > h4{
+            text-transform: capitalize;
+            color: $gray;
+            font-size: 1.6rem;
+        }
+        &__info{
+            @include flex(center,flex-end);
+            & > h1{
+                margin-right: 2rem;
                 font-weight: 700;
+                font-size: 3.5rem;
             }
-            & > h2{
-                font-size: 2.4rem;
-            }
-            & > span{
-                font-size: 1.4rem;
-                color: rgba($color: $black, $alpha: 0.5);
+            & > div{
+                background-color: $green;
+                color: $white;
+                padding: 1rem;
+                border-radius: 1.2rem;
+                text-transform: capitalize;
+                font-size: 1.6rem;
             }
         }
     }
-    &__options{
-        width: 100%;
-        display: grid;
-        grid-template-columns: auto auto;
-        gap: 2rem;
+    &:hover{
+        cursor: pointer;
+        box-shadow: rgba(222, 146, 52, 0.2) 10px 7px 29px 20px;
     }
-    &__btn{
-        @include flex(center,center);
+    &.active{
+        border: 1px solid $main-color;
     }
 }

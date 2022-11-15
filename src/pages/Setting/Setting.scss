@@ -1,0 +1,16 @@
+@use "../../sass/" as *;
+
+.setting {
+  @include flex(center, space-between);
+  &__content {
+    padding: 2rem 3rem;
+    overflow: auto;
+    height: 100%;
+    &__header{
+        @include flex(center , space-between);
+        & > button{
+            width: 10rem;
+        }
+    }
+    }
+}

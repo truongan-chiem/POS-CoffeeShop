@@ -16,12 +16,42 @@
                 color: $black;
             }
             &__note{
-                margin-top: 2rem;
+                color: rgba($color: $black, $alpha: 0.3);
+                font-weight: 600;
+                text-transform: capitalize;
+            }
+            & > * ~ *{
+                margin-top: 1rem;
+            }
+            &__action{
                 @include flex(center,null);
                 & > h2 {
                     margin-right:3rem;
                 }
-                & > div{
+                &__amount{
+                    @include flex (center,center);
+                    & > * ~ * {
+                        margin-left: 0.7rem;
+                    }
+                    & > button{
+                        border: 1px solid $main-color;
+                        background-color: transparent;
+                        color: $black;
+                        width: 2.2rem;
+                        height: 2.2rem;
+                        border-radius: 20%;
+                        @include flex(center,center);
+                        font-weight: 500;
+                        font-size: 1.4rem;
+                        transition: all 0.3s ease;
+                        &:hover{
+                            background-color: rgba($color: $main-color, $alpha: 0.2);
+                            cursor: pointer;
+                        }
+                    }
+                }
+                &__editNote{
+                    margin-left: 2rem;
                     color: $main-color;
                     background-color: rgba($color: $main-color, $alpha: 0.4);
                     border-radius: 0.6rem;

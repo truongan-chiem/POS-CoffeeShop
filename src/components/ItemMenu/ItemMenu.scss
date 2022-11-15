@@ -1,0 +1,57 @@
+@use '../../sass/' as *;
+
+.item-menu{
+    background-color: $white;
+    border-radius: 1rem;
+    padding: 3rem;
+    max-width: 43rem;
+    transition: all 0.3s ease;
+    overflow-y: hidden;
+    &:hover{
+        box-shadow: rgba(84, 59, 10, 0.2) 0px 7px 29px 0px;
+    }
+    & > * ~ *{
+        margin-top: 2.5rem;
+    }
+
+    &__info{
+        @include flex(null,null);
+
+        height: 17.5rem;
+
+        & > img{
+            width: 14rem;
+            height: 100%;
+            border-radius: 1rem;
+        }
+        &__about{
+            margin-left: 4rem;
+            @include flex(flex-start,space-between);
+            flex-direction: column;
+            & > * ~ *{
+                margin-top: 1rem;
+            }
+            & > *:last-child{
+                margin-left: 1rem;
+                font-size: 2rem;
+                font-weight: 700;
+            }
+            & > h2{
+                font-size: 2.4rem;
+            }
+            & > span{
+                font-size: 1.4rem;
+                color: rgba($color: $black, $alpha: 0.5);
+            }
+        }
+    }
+    &__options{
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 2rem;
+    }
+    &__btn{
+        @include flex(center,center);
+    }
+}

@@ -1,0 +1,11 @@
+@use '../../sass/' as *;
+
+.home{
+    &__content{
+        margin-top: 2rem;
+
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2rem;
+    }
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import CardOrder from "../CardOrder/CardOrder";
+import ItemMenu from "../ItemMenu/ItemMenu";
 import './TabContent.scss'
 
 const TabContent = ({tabValue, listData}) => {
@@ -15,7 +15,7 @@ const TabContent = ({tabValue, listData}) => {
 
       <div className="tab-content__body">
         {listData.map(item =>(
-          <CardOrder key={`'menu-'${item.id}`} {...item} />
+          <ItemMenu key={`'menu-'${item.id}`} {...item} />
         ))}
       </div>
     </div>

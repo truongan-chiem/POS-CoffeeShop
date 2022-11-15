@@ -11,6 +11,9 @@ body{
   background-color: $main-bg;
   overflow-y: overlay;
 }
+.container{
+  padding: 4rem 2rem;
+}
 html {
   font-size: 62.5%;
 }

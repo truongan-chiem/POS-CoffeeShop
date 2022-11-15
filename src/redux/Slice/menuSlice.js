@@ -3,7 +3,8 @@ import listMenu from "../../asset/data/listMenu";
 
 const initialState = {
   listMenu: listMenu,
-  orders: [],
+  order: [],
+  listOrders : []
 };
 
 const billSlice = createSlice({
@@ -22,14 +23,44 @@ const billSlice = createSlice({
         number: 1,
         options: action.payload.options,
       };
-      state.orders.push(newOrder);
+      state.order.push(newOrder);
     },
-    printBill : (state) =>{
-      state.orders = []
+    plusNumber : (state,action) =>{
+      const id = action.payload;
+
+      const item = state.order.find(item => item.id === id)
+      let newItem = {...item,number:item.number + 1}
+      
+      const itemIndex = state.order.findIndex(item => item.id === id)
+      state.order.splice(itemIndex,1,newItem)
+    }
+    ,
+    minusNumber : (state,action) =>{
+      const id = action.payload;
+
+      const item = state.order.find(item => item.id === id)
+      let newItem = {...item,number:item.number - 1}
+      
+      const itemIndex = state.order.findIndex(item => item.id === id)
+      if(newItem.number === 0){
+        state.order.splice(itemIndex,1)
+      }
+      else{
+        state.order.splice(itemIndex,1,newItem)
+      }
+    }
+    ,
+    printBill : (state,action) =>{
+
+      const id = new Date().getTime();
+
+      state.listOrders.push({id ,optionPayment : action.payload , orders : state.order})
+
+      state.order = []
     }
   },
 });
 
 export default billSlice.reducer;
 
-export const { addOrder ,printBill} = billSlice.actions;
+export const { addOrder ,printBill,plusNumber,minusNumber} = billSlice.actions;

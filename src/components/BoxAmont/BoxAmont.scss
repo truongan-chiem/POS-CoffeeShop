@@ -1,0 +1,36 @@
+@use '../../sass/' as *;
+
+.box-amount{
+    padding: 2rem;
+    &__header{
+        @include flex(center,space-between);
+        &__title{
+            text-transform: capitalize;
+            font-weight: 700;
+            font-size: 2rem;
+        }
+        &__percent{
+            font-size: 1.2rem;
+            @include flex(center,flex-end);
+            & >  * ~ *{
+                margin-left: 0.4rem;
+            }
+        }
+    }
+    &__body{
+        @include flex(center,flex-start);
+        &__icon{
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            @include flex(center,center);
+            font-size: 2rem;
+            color: $white;
+            margin-right: 3rem;
+        }
+        &__amount{
+            font-size: 4.2rem;
+            font-weight: 700;
+        }
+    }
+}

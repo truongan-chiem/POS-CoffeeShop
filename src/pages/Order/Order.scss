@@ -1,0 +1,22 @@
+@use '../../sass/' as *;
+
+.order{
+    width: 62vw;
+    &__list{
+        margin-top: 4rem;
+        & > * ~ * {
+            margin-top: 2rem;
+        }
+    }
+    &__bill{
+        animation: moveIn 0.4s ease;
+    }
+}
+@keyframes moveIn {
+    from {
+        right: -30%;
+    }
+    to{
+        right: 2%;
+    }
+}

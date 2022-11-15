@@ -1,0 +1,10 @@
+@use '../../sass/' as *;
+
+.box-area-chart{
+    padding: 2rem 2rem 6rem 2rem;
+    grid-column: span 3 ;
+    height: 40rem;
+    &__header{
+        margin-bottom: 2rem;
+    }
+}

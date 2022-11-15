@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { MdOutlineFastfood } from "react-icons/md";
 import { AiOutlineHistory } from "react-icons/ai";
-import { TfiWallet } from "react-icons/tfi";
+import { IoMdCart } from "react-icons/io";
 import { TbDiscount2, TbSmartHome } from "react-icons/tb";
 import { FiSettings ,FiLogOut} from "react-icons/fi";
 
@@ -21,19 +21,14 @@ const listNav = [
     icon: <MdOutlineFastfood />,
   },
   {
+    display: "Order",
+    link: "/order",
+    icon: <IoMdCart />,
+  },
+  {
     display: "History",
     link: "/history",
     icon: <AiOutlineHistory />,
-  },
-  {
-    display: "Wallet",
-    link: "/wallet",
-    icon: <TfiWallet />,
-  },
-  {
-    display: "Promos",
-    link: "/promos",
-    icon: <TbDiscount2 />,
   },
   {
     display: "Setting",

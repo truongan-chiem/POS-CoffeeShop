@@ -1,7 +1,7 @@
 @use '../../sass/' as *;
 
 .card-staff{
-    padding: 2rem;
+    padding: 1rem 2rem;
     @include flex(center,space-between);
     border: 1px solid $main-color;
     border-radius: 1rem;
