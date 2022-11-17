@@ -6,9 +6,9 @@ import Price from "../Price/Price";
 import SelectOption from "../SelectOption/SelectOption";
 import {addOrder} from '../../redux/Slice/menuSlice'
 
-import "./ItemMenu.scss";
+import "./CardItemMenu.scss";
 
-const ItemMenu = ({id, name, desc, img, listOptions, price }) => {
+const CardItemMenu = ({id, name, desc, img, listOptions, price }) => {
   const [options, setOptions] = useState({});
 
   
@@ -55,16 +55,16 @@ const ItemMenu = ({id, name, desc, img, listOptions, price }) => {
   }
 
   return (
-    <div className="item-menu" ref={cardRef} onClick={handleClickCard} style={{ height: height }}>
-      <div className="item-menu__info">
+    <div className="card-item-menu" ref={cardRef} onClick={handleClickCard} style={{ height: height }}>
+      <div className="card-item-menu__info">
         <img src={img} alt="" />
-        <div className="item-menu__info__about">
+        <div className="card-item-menu__info__about">
           <h2>{name}</h2>
           <span>{desc}</span>
           <Price price={price} color="black" />
         </div>
       </div>
-      <div className="item-menu__options">
+      <div className="card-item-menu__options">
         {listOptions.map((item, index) => (
           <SelectOption
             key={index}
@@ -75,11 +75,11 @@ const ItemMenu = ({id, name, desc, img, listOptions, price }) => {
           />
         ))}
       </div>
-      <div className="item-menu__btn">
+      <div className="card-item-menu__btn">
         <Button onClick={handleAddOrder}>Add to Billing</Button>
       </div>
     </div>
   );
 };
 
-export default ItemMenu;
+export default CardItemMenu;

@@ -1,11 +1,13 @@
 @use '../../sass/' as *;
 
-.search{
+.input{
     @include flex(center,null);
     background-color: $white;
     border-radius: 0.5rem;
     position: relative;
-    padding: 1rem 2rem;
+    padding: 2rem;
+    position: relative;
+
     & > input{
         background-color: transparent;
         width: 100%;
@@ -13,9 +15,28 @@
         border: none;
         font-size: 1.5rem;
         color: $main-color;
+
+        &:valid ~ .label__search{
+            display: none;
+        }
+        &:valid ~ .label__normal , &:focus ~ .label__normal{
+            top: 20%;
+            font-size: 1rem;
+            font-weight: 700;
+        }
     }
     & > svg{
         font-size: 2rem;
         color: $main-color;
+    }
+    & > label{
+        transition: all 0.3s ease;
+        position: absolute;
+        text-transform: capitalize;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: rgba($color: $main-color, $alpha: 0.8);
+        font-size: 1.5rem;
     }
 }

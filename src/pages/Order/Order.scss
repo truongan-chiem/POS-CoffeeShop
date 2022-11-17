@@ -7,9 +7,24 @@
         & > * ~ * {
             margin-top: 2rem;
         }
+        & > .order__bill{
+            margin-top: 0;
+        }
     }
     &__bill{
         animation: moveIn 0.4s ease;
+    }
+    &__empty{
+        height: 70vh;
+        width: 85vw;
+        font-size: 5rem;
+        font-weight: 700;
+        color: $main-color;
+        text-transform: capitalize;
+        @include flex(center,center);
+        & >* ~ *{
+            margin-left: 2rem;
+        }
     }
 }
 @keyframes moveIn {

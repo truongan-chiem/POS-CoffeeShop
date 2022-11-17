@@ -4,13 +4,24 @@
   @include flex(center, space-between);
   &__content {
     padding: 2rem 3rem;
-    overflow: auto;
     height: 100%;
-    &__header{
-        @include flex(center , space-between);
-        & > button{
-            width: 10rem;
-        }
+    &__header {
+      @include flex(center, space-between);
+      & > button {
+        width: 10rem;
+      }
+      margin-bottom: 3rem;
     }
+    &__list-dishes{
+        overflow: auto;
+        height: 80%;
+        overflow-y: overlay;
+        display: grid;
+        grid-template-columns: repeat(3 , minmax(0 , 1fr));
+        gap: 2rem;
     }
+  }
+}
+.modal__form{
+  width: 50%;
 }

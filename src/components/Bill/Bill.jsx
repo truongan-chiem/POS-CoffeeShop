@@ -6,7 +6,7 @@ import { BsCash } from "react-icons/bs";
 import { RiQrScan2Line } from "react-icons/ri";
 import { FaRegSadCry } from "react-icons/fa";
 
-import ItemOrder from "../ItemOrder/ItemOrder";
+import ItemOrderBill from "../ItemOrderBill/ItemOrderBill";
 import CardStaff from "../CardStaff/CardStaff";
 import Price from "../Price/Price";
 import Button from "../Button/Button";
@@ -56,7 +56,7 @@ const Bill = ({ order = [], type, idOrder, valueOptionPayment = 0 ,className}) =
         <div className="bill__info__list-choose">
           {order.length > 0 ? (
             order.map((item, index) => (
-              <ItemOrder key={`cardOrder-${index}`} {...item} type={type} />
+              <ItemOrderBill key={`cardOrder-${index}`} {...item} type={type} />
             ))
           ) : (
             <div className="emptyOrder">

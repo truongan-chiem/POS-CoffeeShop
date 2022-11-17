@@ -1,0 +1,40 @@
+@use '../../sass/' as *;
+
+.login{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include flex(center,center);
+    animation: fadeIn 0.3s linear;
+    &__form{
+        padding: 6rem 3rem;
+        flex-direction: column;
+        background-color: $white;
+        border-radius: 1.5rem;
+        @include flex(center,flex-start);
+        & > * ~ *{
+            margin-top: 3rem;
+        }
+        &__header{
+            font-size: 3rem;
+            font-weight: 700;
+            text-transform: capitalize;
+            color: $main-color;
+        }
+        &__input{
+            background-color: $main-bg;
+            width: 100%;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

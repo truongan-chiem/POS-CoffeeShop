@@ -1,0 +1,103 @@
+@use '../../sass/' as *;
+
+.form{
+    & > * ~ *{
+        margin-top: 2rem;
+    }
+    &__header{
+        text-align: center;
+        text-transform: capitalize;
+        font-weight: 700;
+        font-size: 2rem;
+        color: $main-color;
+
+    }
+    &__wrapInput{
+        @include flex(center,flex-start);
+        & > * ~ *{
+            margin-left: 2rem;
+        }
+        &__item{
+            flex: 1;
+        }
+    }
+    &__file{
+        @include flex(center,center);
+        flex-direction: column;
+        width: 100%;
+        padding: 4rem;
+        background-color: $white;
+        border: 1px dashed $main-color;
+        border-radius: 2rem;
+        font-size: 2rem;
+        cursor: pointer;
+        & > input{
+            display: none;
+        }
+        & > * ~ *{
+            margin-top: 1rem;
+        }
+        &> span{
+            font-weight: 700;
+        }
+    }
+    &__type-dish{
+        color: $main-color;
+        font-size: 2rem;
+        // position: relative;
+        @include flex(center,flex-start);
+        &__select{
+            position: relative;
+            margin-left: 2rem;
+            &__display{
+                padding: 1rem;
+                background-color: transparent;
+                border-radius: 1rem;
+                border: 1px solid $main-color;
+                position: relative;
+                width: 20rem;
+                font-size: 1.5rem;
+                font-weight: 700;
+                text-transform: capitalize;
+                cursor: pointer;
+                &::before{
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: 2%;
+                    transform: translate(-50%,-15%);
+                    border-width: 0.8rem;
+                    border-style: solid;
+                    border-color: transparent;
+                    border-top-color: $main-color;
+                    border-radius: 5px;
+                }
+            }
+            &__dropdown{
+                width: 100%;
+                position: absolute;
+                top: 4.5rem;
+                right: 0;
+                background-color: $main-bg;
+                border-radius: 1rem;
+                border: 1px solid $main-color;
+                padding: 1rem 0;
+                &__option{
+                    text-transform: capitalize;
+                    transition: all 0.3s ease;
+                    padding: .4rem 1rem;
+                    font-size: 1.5rem;
+                    &:hover{
+                        cursor: pointer;
+                        background-color: $main-color;
+                        color: $white;
+                        border-radius: 1rem;
+                    }
+                }
+            }
+        }        
+    }
+    &__btn{
+        @include flex(center,center)
+    }
+}

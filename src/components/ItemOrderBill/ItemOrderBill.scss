@@ -1,6 +1,6 @@
 @use '../../sass/' as *;
 
-.item-order{
+.item-order-bill{
     @include flex(center,space-between);
     &__info{
         @include flex(center,null);
