@@ -1,0 +1,24 @@
+@use '../../sass/' as *;
+
+.modal-delete{
+    @include flex(center,center);
+    & > * ~*{
+        margin-top: 2rem;
+    }
+    flex-direction: column;
+    & > h1{
+        font-size: 4rem;
+        font-weight: 700;
+        color: $main-color;
+    }
+    & > p{
+        font-size: 2rem;
+        font-weight: 600;
+    }
+    &__wrapBtn{
+        @include flex(center, flex-start);
+        & > * ~ *{
+            margin-left: 2rem;
+        }
+    }
+}

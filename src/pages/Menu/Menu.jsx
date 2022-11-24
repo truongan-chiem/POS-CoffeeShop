@@ -12,12 +12,12 @@ import { listTabs } from "../../asset/data/listMenu";
 
 const Menu = () => {
 
-  const listMenu = useSelector(state => state.menu.listMenu)
-  const order = useSelector((state) => state.menu.order);
+  const listMenu = useSelector(state => state.menu.menu.listMenu)
+  const isLoading = useSelector(state => state.menu.menu.isLoading)
+  const order = useSelector((state) => state.menu.bill.order);
 
   const [tabValue, setTabValue] = useState('all');
   const [listData, setListData] = useState([]);
-
 
   useEffect(() => {
     const newList = tabValue === 'all' ? listMenu : listMenu.filter(item => item.type === tabValue)
@@ -37,7 +37,7 @@ const Menu = () => {
         ))}
       </nav>
         
-        <TabContent listData = {listData} tabValue = {tabValue}/>
+        {isLoading ? <h1>Is loading ...</h1> : <TabContent listData = {listData} tabValue = {tabValue}/>}
 
       <Bill order={order} type = 'menu' />
     </div>

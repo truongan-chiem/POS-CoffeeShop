@@ -7,7 +7,8 @@
     position: relative;
     padding: 2rem;
     position: relative;
-
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
     & > input{
         background-color: transparent;
         width: 100%;

@@ -2,29 +2,33 @@ import React, { useEffect, useState } from "react";
 import ItemSubSidebar from "../../components/ItemSubSidebar/ItemSubSidebar";
 import SubSidebar from "../../components/SubSidebar/SubSidebar";
 
-import { BsFillAlarmFill, BsLaptop, BsApple, BsAlignBottom } from "react-icons/bs";
+import { BsFillAlarmFill ,BsAlignBottom } from "react-icons/bs";
+import { MdOutlineRestaurantMenu ,MdSwitchAccount } from "react-icons/md";
 
 import "./Setting.scss";
 import TabSubSideBar from "../../components/TabSubSideBar/TabSubSideBar";
 import { listTabs } from "../../asset/data/listMenu";
 import Button from "../../components/Button/Button";
 import CardItemSetting from "../../components/CardItemSetting/CardItemSetting";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CardAddItemSetting from "../../components/CardItemSetting/CardAddItemSetting";
 import Modal from "../../components/Modal/Modal";
 import Form from "../../components/Form/Form";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import { toggleModalForm } from "../../redux/Slice/modalSlice";
+import TableAccount from "../../components/TableAccount/TableAccount";
 
 const Setting = () => {
-  const [activeItem, setActiveItem] = useState(2);
+  const [activeItem, setActiveItem] = useState(0);
   const [activeTab, setActiveTab] = useState("all");
   const listItem = [
     {
-      title: "appearance",
-      icon: <BsApple />,
+      title: "Menu",
+      icon: <MdOutlineRestaurantMenu />,
     },
     {
-      title: "Your restaurant",
-      icon: <BsLaptop />,
+      title: "Account",
+      icon: <MdSwitchAccount />,
     },
     {
       title: "checkout setting",
@@ -35,9 +39,9 @@ const Setting = () => {
       icon: <BsFillAlarmFill />,
     },
   ];
-  const listData = useSelector((state) => state.menu.listMenu);
-  const isToggle = useSelector((state) => state.modal.isToggle);
-
+  const listData = useSelector((state) => state.menu.menu.listMenu);
+  const isToggle = useSelector((state) => state.modal.isToggleForm);
+  const dispatch = useDispatch();
   const [listMenu, setListMenu] = useState([listData]);
 
   useEffect(() => {
@@ -61,31 +65,45 @@ const Setting = () => {
         ))}
       </SubSidebar>
 
-      <TabSubSideBar className={"setting__content"}>
-        <div className="setting__content__header">
-          {listTabs.map((item, index) => (
-            <Button
-              key={`button-${index}`}
-              type={"shortcut"}
-              icon={item.icon}
-              className={activeTab === item.type ? "active" : ""}
-              onClick={() => setActiveTab(item.type)}
-            >
-              {item.display}
-            </Button>
-          ))}
-        </div>
+      <TabSubSideBar>
+        {activeItem === 0 && (
+          <div className="setting__content">
+            <div className="setting__content__header">
+              {listTabs.map((item, index) => (
+                <Button
+                  key={`button-${index}`}
+                  type={"shortcut"}
+                  icon={item.icon}
+                  className={activeTab === item.type ? "active" : ""}
+                  onClick={() => setActiveTab(item.type)}
+                >
+                  {item.display}
+                </Button>
+              ))}
+            </div>
 
-        <div className="setting__content__list-dishes">
-          <CardAddItemSetting />
-          {listMenu.map((item, index) => (
-            <CardItemSetting key={`card-item-setting-${index}`} item={item} />
-          ))}
-        </div>
+            <div className="setting__content__list-dishes">
+              <CardAddItemSetting />
+              {listMenu.map((item, index) => (
+                <CardItemSetting key={`card-item-setting-${index}`} item={item} />
+              ))}
+            </div>
+            {isToggle && (
+              <Modal className={"modal__form"}>
+                <AiOutlineCloseCircle
+                  className="modal__close"
+                  onClick={() => dispatch(toggleModalForm())}
+                />
+                <Form />
+              </Modal>
+            )}
+          </div>
+        )}
+
+        {activeItem ===1 &&(
+          <TableAccount />
+        )}
       </TabSubSideBar>
-     {isToggle && <Modal className ={'modal__form'}>
-        <Form />
-      </Modal>}
     </div>
   );
 };

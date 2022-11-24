@@ -15,7 +15,7 @@ const TabContent = ({tabValue, listData}) => {
 
       <div className="tab-content__body">
         {listData.map(item =>(
-          <CardItemMenu key={`'menu-'${item.id}`} {...item} />
+          <CardItemMenu key={`'menu-'${item._id}`} {...item} />
         ))}
       </div>
     </div>

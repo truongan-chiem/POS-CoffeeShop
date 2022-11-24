@@ -4,11 +4,11 @@ import { useDispatch } from "react-redux";
 import Button from "../Button/Button";
 import Price from "../Price/Price";
 import SelectOption from "../SelectOption/SelectOption";
-import {addOrder} from '../../redux/Slice/menuSlice'
+import {addItemToBill} from '../../redux/Slice/menuSlice'
 
 import "./CardItemMenu.scss";
 
-const CardItemMenu = ({id, name, desc, img, listOptions, price }) => {
+const CardItemMenu = ({_id, name, desc, image, listOptions, price }) => {
   const [options, setOptions] = useState({});
 
   
@@ -47,7 +47,7 @@ const CardItemMenu = ({id, name, desc, img, listOptions, price }) => {
   };
   //handler add order
   const handleAddOrder = () =>{
-    dispatch(addOrder({id,options}))
+    dispatch(addItemToBill({_id,options}))
     listOptions.forEach( item =>{
       setOptions(prev => ({...prev,[item.title] : item.options[0].value}))
     });
@@ -57,7 +57,7 @@ const CardItemMenu = ({id, name, desc, img, listOptions, price }) => {
   return (
     <div className="card-item-menu" ref={cardRef} onClick={handleClickCard} style={{ height: height }}>
       <div className="card-item-menu__info">
-        <img src={img} alt="" />
+        <img src={image.url} alt="" />
         <div className="card-item-menu__info__about">
           <h2>{name}</h2>
           <span>{desc}</span>
