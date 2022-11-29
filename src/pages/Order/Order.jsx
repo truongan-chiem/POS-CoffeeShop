@@ -36,7 +36,7 @@ const Order = () => {
               return (
                 <CardOrder
                   key={index}
-                  id={item.id}
+                  id={item._id}
                   timeFinish={"20:30pm"}
                   number={item.orders.length}
                   total={total}
@@ -50,7 +50,7 @@ const Order = () => {
               className={"order__bill"}
               order={targetOrder.orders}
               type="order"
-              idOrder={targetOrder.id}
+              idOrder={targetOrder._id}
               valueOptionPayment={targetOrder.optionPayment}
             />
           )}

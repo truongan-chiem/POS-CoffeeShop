@@ -14,7 +14,7 @@ const Menu = () => {
 
   const listMenu = useSelector(state => state.menu.menu.listMenu)
   const isLoading = useSelector(state => state.menu.menu.isLoading)
-  const order = useSelector((state) => state.menu.bill.order);
+  const order = useSelector((state) => state.menu.bill.orders);
 
   const [tabValue, setTabValue] = useState('all');
   const [listData, setListData] = useState([]);

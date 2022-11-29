@@ -7,6 +7,7 @@
     max-width: 43rem;
     transition: all 0.3s ease;
     overflow-y: hidden;
+    margin: auto;
     &:hover{
         box-shadow: rgba(84, 59, 10, 0.2) 0px 7px 29px 0px;
     }
@@ -38,6 +39,7 @@
             }
             & > h2{
                 font-size: 2.4rem;
+                text-transform: capitalize;
             }
             & > span{
                 font-size: 1.4rem;

@@ -49,7 +49,7 @@ const deleteAccount = createAsyncThunk(
         }
     }
 )
-//delete account
+//update account
 const updateAccount = createAsyncThunk(
     '/acc/update',
     async ({id , dataForm} ,{rejectWithValue}) =>{
@@ -121,8 +121,11 @@ const accountSlice = createSlice({
     })
     builder.addCase(updateAccount.fulfilled,(state,action) =>{
         state.createAcc.isLoading = false
-        const index = state.listAccount.findIndex(item => item._id === action.payload.data._id)
-        state.listAccount.splice(index,1,action.payload.data)
+        const {data} = action.payload
+        const index = state.listAccount.findIndex(item => item._id === data._id)
+        delete data.phoneNumber
+        delete data.address
+        state.listAccount.splice(index,1,data)
         state.createAcc.error = ''
     })
     builder.addCase(updateAccount.rejected,(state,action) =>{

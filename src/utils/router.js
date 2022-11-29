@@ -1,5 +1,6 @@
 import React from 'react'
-import { Routes,Route } from 'react-router-dom'
+import { Routes,Route,Navigate,Outlet } from 'react-router-dom'
+
 import Order from '../pages/Order/Order'
 import Home from '../pages/Home/Home'
 import Menu from '../pages/Menu/Menu'
@@ -9,20 +10,49 @@ import Profile from '../pages/Profile/Profile'
 import NotSupport from '../pages/NotSupport'
 import Layout from '../components/Layout/Layout'
 import Login from '../pages/Login/Login'
-const router = () => {
+
+const Router = () => {
   return (
     <Routes>
-        <Route path='/login'   element = {<Login />}/>
+        {/* private router */}
+        <Route element = {<PrivateRoute />}>
+          <Route exact path='/' element ={<Home />}/>
+          <Route  path='/menu' element ={<Menu />}  /> 
+          <Route  path='/order' element ={<Order />}  /> 
+          <Route  path='/history' element ={<History />}  /> 
+          <Route  path='/setting' element ={<Setting  />}  /> 
+          <Route  path='/profile' element ={<Profile />}  /> 
+          <Route  path='*' element ={<NotSupport />}  /> 
+        </Route>
 
-        <Route exact path='/'   element = {<Layout>   <Home />        </Layout>}/>
-        <Route path='/menu'     element = {<Layout>   <Menu />        </Layout>}/>
-        <Route path='/order'    element = {<Layout>   <Order />       </Layout>}/>
-        <Route path='/history'  element = {<Layout>   <History />     </Layout>}/>
-        <Route path='/setting'  element = {<Layout>   <Setting />     </Layout>}/>
-        <Route path='/profile'  element = {<Layout>   <Profile />     </Layout>}/>
-        <Route path='*'         element = {<Layout>   <NotSupport />  </Layout>}/>
+        {/* public router */}
+        <Route element = {<PublicRoute />} >
+          <Route path='/login'   element = {<Login />}/>
+        </Route>
+
     </Routes>
   )
 }
 
-export default router
+const auth = () =>{
+  const userId = localStorage.getItem('user_id')
+  return userId ? true : false;
+}
+
+const PublicRoute = () => {
+  // const isLogin = useSelector(state => state.user.information)
+  const isLogin = auth();
+  return isLogin ? <Navigate to={'/'} />: <Outlet />
+}
+
+const PrivateRoute = () => {
+  // const isLogin = useSelector(state => state.user.information)
+  const isLogin = auth();
+  return(
+    <>
+    {isLogin ? <Layout> <Outlet /></Layout> : <Navigate to={'/login'}/>}
+    </>
+  )
+}
+
+export default Router

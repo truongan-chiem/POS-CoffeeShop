@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import API from "../../API";
-// import listMenu from "../../asset/data/listMenu";
 
 const initialState = {
   menu : {
@@ -8,12 +7,21 @@ const initialState = {
     isLoading : false,
   },
   bill :{
-    order: [],
+    orders: [],
   },
   listOrders : [],
   setting : {
     isLoading : false,
     error : null
+  },
+  print_bill :{
+    isLoading : false,
+    error : null,
+    success : false
+  },
+  history :{
+    listData :[],
+    isLoading : false
   }
 };
 
@@ -65,6 +73,39 @@ const deleteDish = createAsyncThunk(
   }
 )
 
+const printBill = createAsyncThunk(
+  'menu/printBill',
+  async(optionPayment,{rejectWithValue,getState}) =>{
+    const state = getState();
+    let orders = state.menu.bill.orders;
+    let newOrders = []
+    orders.forEach(element => {
+      element = {...element , dishId : element._id}
+      newOrders.push(element)
+    });
+
+    const owenId = state.user.information._id;
+    try {
+      const data = {optionPayment , orders : newOrders , owenId }
+      const response = await API.post('/history/order',data)
+      return {...response.data,orders : orders}
+    } catch (error) {
+      return rejectWithValue(error)
+    }
+  }
+)
+
+const getHistory = createAsyncThunk(
+  'history/getAll',
+  async (_,{rejectWithValue}) => {
+    try {
+      const response = await API.get("/history")
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error)
+    }
+  }
+)
 
 
 const menuSlice = createSlice({
@@ -75,49 +116,39 @@ const menuSlice = createSlice({
       const itemOrder = state.menu.listMenu.find((item) => item._id === action.payload._id);
       let newOrder = { ...itemOrder };
       delete newOrder.listOptions;
-      delete newOrder._id;
       delete newOrder.desc;
       newOrder = {
-        _id: new Date().toISOString(),
         ...newOrder,
         number: 1,
         options: action.payload.options,
       };
-      state.bill.order.push(newOrder);
+      state.bill.orders.push(newOrder);
     },
     plusNumber : (state,action) =>{
       const id = action.payload;
 
-      const item = state.bill.order.find(item => item._id === id)
+      const item = state.bill.orders.find(item => item._id === id)
       let newItem = {...item,number:item.number + 1}
       
-      const itemIndex = state.bill.order.findIndex(item => item._id === id)
+      const itemIndex = state.bill.orders.findIndex(item => item._id === id)
       state.bill.order.splice(itemIndex,1,newItem)
     }
     ,
     minusNumber : (state,action) =>{
       const id = action.payload;
 
-      const item = state.bill.order.find(item => item._id === id)
+      const item = state.bill.orders.find(item => item._id === id)
       let newItem = {...item,number:item.number - 1}
       
-      const itemIndex = state.bill.order.findIndex(item => item._id === id)
+      const itemIndex = state.bill.orders.findIndex(item => item._id === id)
       if(newItem.number === 0){
-        state.bill.order.splice(itemIndex,1)
+        state.bill.orders.splice(itemIndex,1)
       }
       else{
-        state.bill.order.splice(itemIndex,1,newItem)
+        state.bill.orders.splice(itemIndex,1,newItem)
       }
     }
     ,
-    printBill : (state,action) =>{
-
-      const id = new Date().getTime();
-
-      state.listOrders.push({id ,optionPayment : action.payload , orders : state.bill.order})
-
-      state.bill.order = []
-    },
     resetErrorSetting : (state) =>{
       state.setting.error = null
     }
@@ -175,10 +206,37 @@ const menuSlice = createSlice({
       state.setting.isLoading = false
       state.setting.error = action.payload.data;
     })
+    //printBill
+
+    builder.addCase(printBill.pending, state =>{
+      state.print_bill.isLoading = true
+    })
+    builder.addCase(printBill.fulfilled, (state,action) =>{
+      state.print_bill.isLoading = false
+      state.listOrders.push(action.payload)
+      state.bill.orders = []
+    })
+    builder.addCase(printBill.rejected, (state,action) =>{
+      state.print_bill.isLoading = false
+      console.log(action.payload);
+    })
+
+    //get order of history
+    builder.addCase(getHistory.pending , (state) =>{
+      state.history.isLoading = true
+    })
+    builder.addCase(getHistory.fulfilled , (state,action) =>{
+      state.history.isLoading = false
+      state.history.listData = action.payload
+    })
+    builder.addCase(getHistory.rejected , (state,action) =>{
+      state.history.isLoading = false
+      console.log(action.payload)
+    })
   }
 });
 
 export default menuSlice.reducer;
 
-export const { addItemToBill ,printBill,plusNumber,minusNumber,resetErrorSetting} = menuSlice.actions;
-export {getAllMenu,createNewDish,deleteDish,updateDish};
+export const { addItemToBill ,plusNumber,minusNumber,resetErrorSetting} = menuSlice.actions;
+export {getAllMenu,createNewDish,deleteDish,updateDish,printBill,getHistory};

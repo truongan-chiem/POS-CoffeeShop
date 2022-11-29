@@ -11,8 +11,8 @@ const Header = ({ title, type }) => {
         <Input
           placeholder={"Search category or menu ..."}
           className={"header__search"}
+          isSeach = {true}
           icon={<AiOutlineSearch />}
-          type={'search'}
           left = {'2rem'}
         />
       )}

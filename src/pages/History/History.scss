@@ -32,6 +32,14 @@
         width: 100%;
         margin-top: 2rem;
         font-size: 1.6rem;
+        &__loading{
+            font-weight: 700;
+            color: $main-color;
+            font-size: 4rem;
+            margin-top: 10rem;
+            text-align: center;
+            animation: chopchop 1s infinite;
+        }
         & > table{
             width: 100%;
             & > thead{
@@ -88,5 +96,16 @@
             color: $white;
             @include flex(center,center);
         }
+    }
+}
+@keyframes chopchop {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
     }
 }

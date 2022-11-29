@@ -134,13 +134,11 @@ const FormCreate = ({ setToggleForm, dataEdit }) => {
         <h1 className="form-addAccount__header">{dataEdit ? "Edit" : "Create"} Account</h1>
         <div className="form-addAccount__wrapInput">
           <Input
-            type={"field"}
             placeholder="First name"
             {...register("firstName")}
             className={errors?.firstName ? "errorInput" : ""}
           />
           <Input
-            type={"field"}
             placeholder="Last name"
             {...register("lastName")}
             className={errors?.lastName ? "errorInput" : ""}
@@ -162,19 +160,16 @@ const FormCreate = ({ setToggleForm, dataEdit }) => {
         {!dataEdit && (
           <>
             <Input
-              type={"field"}
               placeholder="Account"
               {...register("account")}
               className={errors?.account ? "errorInput" : ""}
             />
             <Input
-              type={"field"}
               placeholder="password"
               {...register("password")}
               className={errors?.password ? "errorInput" : ""}
             />
             <Input
-              type={"field"}
               placeholder="re-password"
               {...register("rePassword")}
               className={errors?.rePassword ? "errorInput" : ""}
@@ -182,7 +177,6 @@ const FormCreate = ({ setToggleForm, dataEdit }) => {
           </>
         )}
         <Input
-          type={"field"}
           placeholder="Email"
           {...register("email")}
           className={errors?.email ? "errorInput" : ""}

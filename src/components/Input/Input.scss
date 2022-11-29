@@ -40,4 +40,17 @@
         color: rgba($color: $main-color, $alpha: 0.8);
         font-size: 1.5rem;
     }
+    &__seepw{
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+        font-size: 1.7rem;
+        color: $main-color;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        &:hover{
+            color: rgba($color: $main-color, $alpha: 0.6);
+        }
+    }
 }

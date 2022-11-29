@@ -9,6 +9,7 @@ import { FiSettings } from "react-icons/fi";
 import Button from "../Button/Button";
 
 import "./Sidebar.scss";
+import { useSelector } from "react-redux";
 const listNav = [
   {
     display: "Home",
@@ -38,7 +39,7 @@ const listNav = [
 ];
 const Sidebar = () => {
   const location = useLocation();
-
+  const user = useSelector(state => state.user.information)
   return (
     <div className="sidebar">
       <div className="sidebar__top">
@@ -65,7 +66,7 @@ const Sidebar = () => {
           className={`sidebar__profile ${location.pathname === "/profile" ? "activeNav" : ""}`}
           icon={
             <img
-              src="https://i.pinimg.com/736x/fd/1c/02/fd1c02c20b1f9aaa3d9dff189647e11a.jpg"
+              src={user?.image.url}
               alt=""
             />
           }

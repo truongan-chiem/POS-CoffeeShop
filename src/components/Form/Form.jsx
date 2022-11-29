@@ -180,14 +180,12 @@ const Form = ({ data, setToggleFormEdit }) => {
               onChange={(e) => setFormData((prev) => ({ ...prev, nameDish: e.target.value }))}
               className={"form__wrapInput__item"}
               placeholder={"Name Dishes"}
-              type="normal-field"
               value={formData.nameDish}
               left={"1rem"}
             />
             <Input
               className={"form__wrapInput__item"}
               placeholder={"Price Dishes"}
-              type="normal-field"
               left={"1rem"}
               onChange={(e) => setFormData((prev) => ({ ...prev, price: e.target.value }))}
               value={formData.price}
@@ -196,7 +194,6 @@ const Form = ({ data, setToggleFormEdit }) => {
           <Input
             onChange={(e) => setFormData((prev) => ({ ...prev, decsDish: e.target.value }))}
             value={formData.decsDish}
-            type={"field"}
             placeholder={"Decription"}
             className={"form__wrapInput__item"}
           />
@@ -268,7 +265,7 @@ const Form = ({ data, setToggleFormEdit }) => {
                     left={"2rem"}
                     value={itemOption.display}
                     key={`indexOption-${indexOption}`}
-                    type={"search"}
+                    isSeach = {true}
                     placeholder="Ex : Hot..."
                     className={"smallInput"}
                     onChange={(e) => {

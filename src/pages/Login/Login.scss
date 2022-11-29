@@ -26,6 +26,15 @@
         &__input{
             background-color: $main-bg;
             width: 100%;
+            &.error{
+                & > label{
+                    color: red;
+                }
+                & > input{
+                    color: red;
+                }
+                border: 1px solid red;
+            }
         }
     }
 }

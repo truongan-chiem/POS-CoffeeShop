@@ -58,13 +58,25 @@
   }
   &__tab {
     padding: 2rem;
-    & > * ~ * {
-      margin-top: 2.8rem;
+    & > form{
+      & > * ~ * {
+        margin-top: 2.8rem;
+      }
+      .errorInput{
+        border: 1px solid red !important;
+        & > label{
+            color: red;
+        }
+        & > input{
+            color :red
+        }
+    }
     }
     &__header {
       text-transform: capitalize;
       font-size: 3rem;
       font-weight: 700;
+      margin-bottom: 2rem;
     }
     &__splitField {
       width: 100%;
