@@ -1,5 +1,5 @@
-import React from 'react'
-import { Routes,Route,Navigate,Outlet } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Routes,Route,Navigate,Outlet, useLocation } from 'react-router-dom'
 
 import Order from '../pages/Order/Order'
 import Home from '../pages/Home/Home'
@@ -12,6 +12,19 @@ import Layout from '../components/Layout/Layout'
 import Login from '../pages/Login/Login'
 
 const Router = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const path = location.pathname;
+    if(path === '/'){
+      document.title = 'Home'
+    }
+    else{
+      const title = path.slice(1)
+      document.title = title[0].toUpperCase() + title.substring(1);
+    }
+  }, [location]);
+
   return (
     <Routes>
         {/* private router */}
