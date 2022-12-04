@@ -9,12 +9,15 @@ import "./TableAccount.scss";
 import FormCreate from "./FormCreate";
 
 const TableAccount = () => {
-  const dispatch = useDispatch();
   const [toggleForm, setToggleForm] = useState(false);
   const [toggleDeleteModal, setToggleDeleteModal] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [targetIndexAccount, setTargetIndexAccount] = useState(null);
+
+  const dispatch = useDispatch();
   const listAccount = useSelector((state) => state.account.listAccount);
+  const user = useSelector(state => state.user.information)
+
   useEffect(() => {
     dispatch(getAllAccount());
   }, [dispatch]);
@@ -29,13 +32,13 @@ const TableAccount = () => {
   }
   return (
     <div className="table-account">
-      <AiOutlinePlusCircle
+      {user.role === 1 && <AiOutlinePlusCircle
         className="table-account__createAcc"
         onClick={() => {
           setIsEdit(false)
           setToggleForm(true)
         }}
-      />
+      />}
       <table className="table-account__main">
         <thead>
           <tr>
@@ -45,7 +48,7 @@ const TableAccount = () => {
             <th>Gender</th>
             <th>Role</th>
             <th>Avatar</th>
-            <th>actions</th>
+            {user.role === 1 && <th>actions</th>}
           </tr>
         </thead>
         <tbody>
@@ -59,12 +62,12 @@ const TableAccount = () => {
               <td>
                 <img src={item.image.url} alt="" />
               </td>
-              <td>
+              {user.role === 1 && <td>
                 <Button className={"tableAccount__btn edit"} onClick = {() => handleEdit(index)}>Edit</Button>
                 <Button className={"tableAccount__btn del"} onClick={() => handleDelete(index)}>
                   Del
                 </Button>
-              </td>
+              </td>}
             </tr>
           ))}
         </tbody>

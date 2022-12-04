@@ -6,6 +6,9 @@
     border-radius: 0.5rem;
     position: relative;
     padding: 2rem;
+    @include desktop{
+        padding: 1rem;
+    }
     position: relative;
     border: 1px solid transparent;
     transition: all 0.3s ease;

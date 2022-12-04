@@ -12,14 +12,24 @@
             width: 5rem;
             height: 5rem;
             border-radius: 0.4rem;
+            @include desktop{
+                width: 3.5rem;
+                height: 3.5rem;
+            }
         }
         &__about{
             margin-left: 2rem;
             & > h3{
                 color: rgba($color: $black, $alpha: 0.2);
+                @include desktop{
+                    font-size: 0.8rem;
+                }
             }
             & > h2{
                 color: $black;
+                @include desktop{
+                    font-size: 1rem;
+                }
             }
         }
     }
@@ -38,6 +48,9 @@
             border-radius: 50%;
             top: 5px;
             right: 5px;
+        }
+        @include desktop{
+            display: none;
         }
     }
 }

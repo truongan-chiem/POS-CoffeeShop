@@ -14,5 +14,12 @@
         & > button{
             width: 8rem;
         }
+        @include desktop{
+            overflow-x: auto;
+            & > button{
+                width: 6rem;
+                margin-right: 2rem;
+            }
+        }
     }
 }

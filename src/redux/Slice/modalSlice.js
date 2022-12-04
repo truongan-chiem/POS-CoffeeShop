@@ -11,6 +11,7 @@ const modalSlice = createSlice({
     toggleModalForm : (state) =>{
         state.isToggleForm = !state.isToggleForm
     },
+   
   },
 });
 

@@ -5,7 +5,6 @@ import {Notificationz} from '../../components/Notification/Notification'
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import { login, resetError } from "../../redux/Slice/userSlice";
-
 import "./Login.scss";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
@@ -47,6 +46,7 @@ const Login = () => {
 
   return (
     <div className="login">
+      <div className="login__background"></div>
       <form className="login__form" onSubmit={(e) => handleSubmit(e)}>
         <h1 className="login__form__header">Login &amp; chill</h1>
         <Input

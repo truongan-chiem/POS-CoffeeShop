@@ -3,7 +3,6 @@
 .tab-content{
     &__header{
         @include flex(center,space-between);
-
         & > h1{
             font-weight: 700;
             text-transform: capitalize;
@@ -20,5 +19,8 @@
         gap: 2rem;
         justify-content: center;
         padding-top: 2rem;
+        @include desktopLg{
+            grid-template-columns: repeat(1 , minmax(0,1fr));
+        }
     }
 }

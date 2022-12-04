@@ -22,8 +22,9 @@ const BoxChartCircle = ({totalIncome}) => {
   const options = {
     cutout: 80,
     rotation: 270,
-    borderRadius: 20,
+    borderRadius: 16,
     spacing: 8,
+    maintainAspectRatio : false,
     plugins: {
       legend: {
         display: true,

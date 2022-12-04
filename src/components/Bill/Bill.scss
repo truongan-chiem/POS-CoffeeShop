@@ -41,7 +41,11 @@
                 font-size: 3.5rem;
                 & > span{
                     margin-bottom: 5rem;
-                    font-weight: 700
+                    font-weight: 700;
+                    text-align: center;
+                }
+                @include desktop{
+                    font-size: 2rem;
                 }
             }
         }
@@ -62,7 +66,10 @@
     &__payment{
         flex-direction: column;
         & > h1{
-            font-size: 3rem
+            font-size: 3rem;
+            @include desktop{
+                font-size: 2rem
+            }
         }
         @include flex(center,null);
         & > * ~ * {
@@ -75,6 +82,11 @@
             }
             & > button{
                 width: 10rem;
+            }
+            @include desktopLg{
+                & > button{
+                    width: 6rem;
+                }
             }
         }
         &__printbill{

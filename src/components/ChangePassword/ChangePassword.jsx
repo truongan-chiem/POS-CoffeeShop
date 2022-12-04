@@ -45,7 +45,7 @@ const ChangePassword = () => {
     else{
       setError(message)
     }
-  }, [success]);
+  }, [success,message,dispatch]);
 
   useEffect(() => {
     if(error){

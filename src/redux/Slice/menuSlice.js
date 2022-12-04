@@ -107,6 +107,13 @@ const getHistory = createAsyncThunk(
   }
 )
 
+const deleteOrder = createAsyncThunk(
+  'history/deleteOrder',
+  async(id) =>{
+    const response = await API.delete(`/history/order/${id}`)
+    return {...response.data,id}
+  }
+)
 
 const menuSlice = createSlice({
   name: "menu",
@@ -131,7 +138,7 @@ const menuSlice = createSlice({
       let newItem = {...item,number:item.number + 1}
       
       const itemIndex = state.bill.orders.findIndex(item => item._id === id)
-      state.bill.order.splice(itemIndex,1,newItem)
+      state.bill.orders.splice(itemIndex,1,newItem)
     }
     ,
     minusNumber : (state,action) =>{
@@ -233,10 +240,16 @@ const menuSlice = createSlice({
       state.history.isLoading = false
       console.log(action.payload)
     })
+    //delete order
+    builder.addCase(deleteOrder.fulfilled , (state ,action) =>{
+      const {id} = action.payload;
+      const newList = state.history.listData.filter(item => item._id !== id)
+      state.history.listData = newList
+    })
   }
 });
 
 export default menuSlice.reducer;
 
 export const { addItemToBill ,plusNumber,minusNumber,resetErrorSetting} = menuSlice.actions;
-export {getAllMenu,createNewDish,deleteDish,updateDish,printBill,getHistory};
+export {getAllMenu,createNewDish,deleteDish,updateDish,printBill,getHistory,deleteOrder};

@@ -6,7 +6,13 @@
     &__title{
         font-weight: 700;
         font-size: 3rem;
-        text-transform: capitalize
+        text-transform: capitalize;
+        @include desktopLg{
+            font-size: 2rem;
+        }
+        @include desktop{
+            font-size: 1.5rem;
+        }
     }
     &__search{
         width:40rem;

@@ -166,11 +166,13 @@ const FormCreate = ({ setToggleForm, dataEdit }) => {
             />
             <Input
               placeholder="password"
+              type = "password"
               {...register("password")}
               className={errors?.password ? "errorInput" : ""}
             />
             <Input
               placeholder="re-password"
+              type = "password"
               {...register("rePassword")}
               className={errors?.rePassword ? "errorInput" : ""}
             />

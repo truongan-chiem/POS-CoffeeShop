@@ -37,7 +37,6 @@ const Order = () => {
                 <CardOrder
                   key={index}
                   id={item._id}
-                  timeFinish={"20:30pm"}
                   number={item.orders.length}
                   total={total}
                   className={item.id === targetOrder?.id ? "active" : ""}

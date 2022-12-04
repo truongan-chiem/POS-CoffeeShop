@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux'
 import Modal from '../Modal/Modal'
 import Button from '../Button/Button'
 import './ModalDelete.scss'
-import { deleteDish } from '../../redux/Slice/menuSlice'
+import { deleteDish, deleteOrder } from '../../redux/Slice/menuSlice'
 import { deleteAccount } from '../../redux/Slice/accountSlice'
 
 const ModalDelete = ({id,type = 'dish',name,setIsToggleDelete}) => {
@@ -11,6 +11,9 @@ const ModalDelete = ({id,type = 'dish',name,setIsToggleDelete}) => {
   const handleDelete = () =>{
     if(type === 'dish'){
       dispatch(deleteDish(id))
+    }
+    else if(type === 'order'){
+      dispatch(deleteOrder(id))
     }
     else{
       dispatch(deleteAccount(id))

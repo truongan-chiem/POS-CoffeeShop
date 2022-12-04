@@ -29,12 +29,13 @@
         &__info{
             @include flex(center,flex-end);
             & > h1{
-                margin-right: 2rem;
                 font-weight: 700;
                 font-size: 3.5rem;
             }
             & > div{
                 background-color: $green;
+                margin-right: 2rem;
+
                 color: $white;
                 padding: 1rem;
                 border-radius: 1.2rem;
@@ -49,5 +50,34 @@
     }
     &.active{
         border: 1px solid $main-color;
+    }
+}
+.timer{
+    color: $main-color;
+    font-size: 1.5rem;
+    font-weight: 700;
+    &.done{
+        color: $green;
+        animation: done 0.5s linear;
+    }
+    &.hide{
+        animation: hide 1s linear;
+    }
+}
+
+@keyframes done {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes hide {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
     }
 }

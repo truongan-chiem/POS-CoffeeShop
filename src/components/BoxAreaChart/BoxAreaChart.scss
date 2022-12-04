@@ -3,6 +3,9 @@
 .box-area-chart{
     padding: 2rem 2rem 6rem 2rem;
     grid-column: span 3 ;
+    @include desktop{
+    grid-column: span 2 ;
+    }
     height: 40rem;
     &__header{
         margin-bottom: 2rem;

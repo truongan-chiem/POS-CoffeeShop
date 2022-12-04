@@ -29,15 +29,7 @@ const Setting = () => {
     {
       title: "Account",
       icon: <MdSwitchAccount />,
-    },
-    {
-      title: "checkout setting",
-      icon: <BsAlignBottom />,
-    },
-    {
-      title: "security",
-      icon: <BsFillAlarmFill />,
-    },
+    }
   ];
   const listData = useSelector((state) => state.menu.menu.listMenu);
   const isToggle = useSelector((state) => state.modal.isToggleForm);
